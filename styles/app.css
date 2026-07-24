@@ -29,7 +29,7 @@ header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+    gap: var(--space-md);
 
     padding: var(--space-md);
 }
@@ -51,7 +51,16 @@ main{
 #toolbar{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+}
+#toolbar-actions{
+    width: 100%;
+}
+#toolbar-tabs{
+    width: 100%;
+}
+#toolbar-sort{
+    width: 100%;
 }
 
 #notes-container{
