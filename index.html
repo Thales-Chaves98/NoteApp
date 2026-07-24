@@ -32,7 +32,18 @@
         </section>
         
         <section id="notes-container">
-            <!--Show notes here-->
+            
+            <div class="empty-state" hidden>
+                <div class="empty-state-header">
+                    <p>Icone de task</p> <!--Colocar icone de nota-->
+                </div>
+
+                <div class="empty-state-content" >
+                    <h2>Nenhuma nota encontrada.</h2>
+                    <p>Clique em "Nova Nota" para criar a sua primeira nota.</p>
+                </div>
+            </div>
+            
         </section>
     
     </main>
@@ -41,7 +52,27 @@
 
     </footer>
 
-    <section id="note-modal" class="modal" >
+    <article class="note-card" hidden>
+        <div class="note-header">
+            <button class="favorite-btn"><span class="material-symbols-outlined">star</span></button>
+            <button class="pin-btn"><span class="material-symbols-outlined">keep</span></button>
+            <button class="note-menu-btn"></button>
+        </div>
+
+        <div class="note-content">
+            <div class="note-title"></div>
+            <div class="note-text"></div>
+            <div class="note-category"></div>
+            <div class="note-tags"></div>
+            <div class="note-dates">
+                <small>Criado...</small>
+                <small>Editado...</small>
+            </div>
+
+        </div>
+    </article>
+
+    <section id="note-modal" class="modal" hidden >
         <div class="modal-content">
                 <h1>NOVA NOTA</h1>
             <form class="note-form">
@@ -99,6 +130,19 @@
             </form>
             
             
+        </div>
+    </section>
+
+    <section id="delete-modal" class="modal" hidden>
+        <div class="modal-content">
+            <h2>EXCLUIR NOTA.</h2>
+            <p>Tem certeza que deseja excluir essa nota ?</p>
+            <p>Essa ação não poderá ser desfeita !</p>
+
+            <div class="modal-confirmation-buttons">
+                <button id="cancel-delete">Cancelar</button>
+                <button id="confirm-delete">Excluir</button>
+            </div>
         </div>
     </section>
     
