@@ -6,28 +6,35 @@
     <title>NotesApp</title>
     <link rel="stylesheet" href="styles/app.css">
     <link rel="shortcut icon" href="assets/noteFavicon.png" type="image/x-icon">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"/>
 </head>
 <body>
     <header>
-        <div class="logo"></div>
+        <div class="logo"><span class="material-symbols-outlined">summarize</span></div>
         <input type="text" class="search-input" placeholder="Pesquisar Notas">
-        <button class="theme-toggle"></button>
+        <button class="theme-toggle">Dark/Light</button>
     </header>
 
     <main>
         <section id="toolbar">
+
             <div id="toolbar-actions">
-                <button class="create-note-btn"></button>
+                <button class="create-note-btn"><span class="material-symbols-outlined">add_circle</span></button>
             </div>
 
             <div id="toolbar-tabs">
-                <button class="filter-tab" data-id="1"></button>
-                <button class="filter-tab" data-id="2"></button>
-                <button class="filter-tab" data-id="3"></button>
+                <button class="filter-tab" data-id="1">Todas</button>
+                <button class="filter-tab" data-id="2">Favoritadas</button>
+                <button class="filter-tab" data-id="3">Arquivadas</button>
             </div>
 
             <div id="toolbar-sort">
-                 <select class="sort-select"></select>
+                 <select class="sort-select">
+                    <option value="recent">Mais recentes</option>
+                    <option value="oldest">Mais antigas</option>
+                    <option value="title-asc">Título (A-Z)</option>
+                    <option value="title-desc">Título (Z-A)</option>
+                 </select>
             </div>
         </section>
         
@@ -49,7 +56,7 @@
     </main>
 
     <footer>
-
+        <P class="footer-text">To-Do List made by <a href="https://github.com/Thales-Chaves98">Thales Chaves</a></P>
     </footer>
 
     <article class="note-card" hidden>
