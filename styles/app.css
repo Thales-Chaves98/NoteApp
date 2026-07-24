@@ -67,4 +67,36 @@ main{
     display: grid;
     grid-template-columns: 1fr;
 
+    gap: var(--space-lg);
+
+}
+.note-card{
+    display: flex;
+    flex-direction: column;
+    
+    width: 280px;
+    
+    
+    border-radius: 0 0 var(--space-lg) var(--space-lg);
+    overflow: hidden;
+
+}
+.note-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-sm);
+
+    
+    height: 30px;
+}
+.note-menu-btn{
+    margin-left: auto;
+}
+
+.note-cotent{
+    display: flex;
+    flex-direction: column;
+
+    padding: var(--space-md);
 }
