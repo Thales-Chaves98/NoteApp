@@ -1,0 +1,36 @@
+:root{
+    --background: #111827;
+    --surface: #1F2937;
+    --surface-light: #374151;
+    --text: #F9FAFB;
+    --text-secondary: #9CA3AF;
+    --accent: #3B82F6;
+    --success: #22C55E;
+    --danger: #EF4444;
+    --danger-hover: #DC2626;
+
+    /*Notes colors*/
+    --note-yellow: #FACC15;
+    --note-blue:   #60A5FA;
+    --note-green:  #4ADE80;
+    --note-red:    #F87171;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+
+    --shadow-sm: 0 2px 6px rgba(0,0,0,.15);
+    --shadow-md: 0 8px 18px rgba(0,0,0,.20);
+    --shadow-lg: 0 12px 30px rgba(0,0,0,.25);
+
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+
+    --transition-fast: .15s ease;
+    --transition-normal: .25s ease;
+    --transition-slow: .4s ease;
+    
+}
