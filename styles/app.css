@@ -34,11 +34,12 @@ header{
     box-shadow: var(--shadow-md);
 }
 .logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     width: 30px;
     height: 30px;
-}
-.logo span{
-    margin: auto;
 }
 .search-input{
     flex: 1;
@@ -108,8 +109,8 @@ main{
     align-items: center;
     gap: var(--space-xs);
 
+    padding: var(--space-sm);
     
-    height: 30px;
 }
 .note-menu-btn{
     margin-left: auto;
@@ -121,14 +122,8 @@ main{
 
     padding: var(--space-sm);
 }
-.note-title h2{
-    text-indent: var(--space-md);
-}
 .note-text {
     margin: var(--space-xs) 0;
-}
-.note-text p{
-    text-indent: var(--space-md);
 }
 /*.note-category{
 
@@ -138,8 +133,4 @@ main{
     gap: var(--space-sm);
 
     margin: var(--space-xs) 0;
-}
-.note-dates{
-    display: flex;
-    flex-direction: row;
 }
