@@ -68,21 +68,43 @@ main{
 
     width: 90vw;
     margin-inline: auto;
-
 }
 #toolbar{
     display: flex;
     flex-direction: column;
+
+    gap: var(--space-sm);
+
+    padding: var(--space-xs) 0;
+    margin-bottom: var(--space-xs);
+
     width: 100%;
 }
 #toolbar-actions{
     width: 100%;
 }
-#toolbar-tabs{
+.create-note-btn{
     width: 100%;
+}
+#toolbar-tabs{
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-xs);
+
+    width: 100%;
+}
+.filter-tab{
+    flex: 1;
+
+    padding: var(--space-xs);
 }
 #toolbar-sort{
     width: 100%;
+}
+.sort-select{
+    width: 100%;
+
+    padding: var(--space-xs);
 }
 
 #notes-container{
@@ -93,15 +115,20 @@ main{
 
     width: 100%;
 }
+
 .note-card{
     display: flex;
     flex-direction: column;
     
     width: 100%;
         
-    border-radius: 0 0 var(--space-lg) var(--space-lg);
+    border-radius: var(--space-lg);
+    
+    background: var(--surface-light);
+    box-shadow: var(--shadow-md);
     overflow: hidden;
 
+    display: none; /*REMOVE LATER !!!!!!!!!*/
 }
 .note-header{
     display: flex;
@@ -109,8 +136,17 @@ main{
     align-items: center;
     gap: var(--space-xs);
 
-    padding: var(--space-sm);
+    padding: var(--space-xs);
+
+    background: var(--note-red);
     
+}
+.note-header button{
+    background: none;
+    color: var(--text);
+    
+    border: none;
+    padding: var(--space-xs);
 }
 .note-menu-btn{
     margin-left: auto;
@@ -122,15 +158,59 @@ main{
 
     padding: var(--space-sm);
 }
+.note-title h2{
+    font-size: 1.4rem;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 .note-text {
     margin: var(--space-xs) 0;
 }
-/*.note-category{
+.note-text p{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
 
-}*/
+    overflow: hidden;
+    line-height: 1.5;
+}
+.note-category{
+    padding: var(--space-xs);
+}
+.note-category span{
+    display: inline-block;
+
+    border-radius: 999px;
+
+    background: var(--surface);
+    color: var(--text);
+
+    padding: var(--space-xs) var(--space-sm);
+
+    font-size: .9rem;
+}
 .note-tags{
-    display: inline-flex;
-    gap: var(--space-sm);
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
 
-    margin: var(--space-xs) 0;
+    margin-bottom: var(--space-xs);
+}
+.note-tags span{
+    display: inline-block;
+    
+    border-radius: var(--space-sm);
+
+    background: var(--surface);
+    color: var(--text-secondary);
+    
+    padding: var(--space-xs);
+    
+    font-size: .8rem;
+}
+.note-dates{
+    color: var(--text-secondary);
+    font-size: .9rem;
 }
