@@ -28,9 +28,12 @@ header{
     gap: var(--space-xs);
 
     padding: var(--space-sm);
+    margin-bottom: var(--space-sm);
 
     background: var(--surface);
     box-shadow: var(--shadow-md);
+
+    height: 70px;
 }
 .logo{
     display: flex;
