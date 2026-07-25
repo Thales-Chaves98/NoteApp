@@ -10,9 +10,11 @@
 </head>
 <body>
     <header>
-        <div class="logo"><span class="material-symbols-outlined">summarize</span></div>
+        <div class="logo">
+            <span class="material-symbols-outlined">summarize</span>
+        </div>
         <input type="text" class="search-input" placeholder="Pesquisar Notas">
-        <button class="theme-toggle">Dark/Light</button>
+        <button class="theme-toggle">D/L</button>
     </header>
 
     <main>
@@ -59,13 +61,26 @@
         </div>
 
         <div class="note-content">
-            <div class="note-title">Lorem Ipsum</div>
-            <div class="note-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat quidem sapiente excepturi quae.</div>
-            <div class="note-category">Lorem</div>
-            <div class="note-tags">#Lorem</div>
+            <div class="note-title">
+                <h2>Lorem Ipsum</h2>
+            </div>
+
+            <div class="note-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat quidem sapiente excepturi quae.</p>
+            </div>
+
+            <div class="note-category">
+                <span>Lorem</span>
+            </div>
+
+            <div class="note-tags">
+                <span><small>#Lorem</small></span>    
+                <span><small>#Ipsum</small></span>    
+            </div>
+
             <div class="note-dates">
-                <small>01/01/2001 Criado...</small>
-                <small>01/01/2001 Editado...</small>
+                <span><small>01/01/2001 Criado...</small></span>
+                <span><small>01/01/2001 Editado...</small></span>
             </div>
 
         </div>
@@ -75,7 +90,7 @@
     </main>
 
     <footer>
-        <P class="footer-text">To-Do List made by <a href="https://github.com/Thales-Chaves98">Thales Chaves</a></P>
+        <P class="footer-text">Notes Manager made by <a href="https://github.com/Thales-Chaves98">Thales Chaves</a></P>
     </footer>
 
     

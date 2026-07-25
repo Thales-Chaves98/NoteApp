@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import 'variables.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
 
 *{
     margin: 0;
@@ -16,18 +17,45 @@ body{
     display: flex;
     flex-direction: column;
     
+    background: var(--background);
+    font-family: 'Inter';
+    color: var(--text);
 }
 
 header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--space-md);
+    gap: var(--space-xs);
 
-    padding: var(--space-md);
+    padding: var(--space-sm);
+
+    background: var(--surface);
+    box-shadow: var(--shadow-md);
+}
+.logo{
+    width: 30px;
+    height: 30px;
+}
+.logo span{
+    margin: auto;
 }
 .search-input{
     flex: 1;
+
+    background: var(--surface-light);
+
+    border-radius: var(--space-sm);
+    border: none;
+    outline: none;
+    
+    padding: var(--space-sm);
+}
+.theme-toggle{
+    width: 30px;
+    height: 30px;
+
+    border: none;
 }
 
 main{
@@ -60,7 +88,7 @@ main{
     display: grid;
     grid-template-columns: 1fr;
 
-    gap: var(--space-lg);
+    gap: var(--space-md);
 
     width: 100%;
 }
@@ -73,13 +101,12 @@ main{
     border-radius: 0 0 var(--space-lg) var(--space-lg);
     overflow: hidden;
 
-    background: wheat;
 }
 .note-header{
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--space-sm);
+    gap: var(--space-xs);
 
     
     height: 30px;
@@ -92,8 +119,27 @@ main{
     display: flex;
     flex-direction: column;
 
-    padding: var(--space-lg);
+    padding: var(--space-sm);
 }
-.note.title{
+.note-title h2{
+    text-indent: var(--space-md);
+}
+.note-text {
+    margin: var(--space-xs) 0;
+}
+.note-text p{
+    text-indent: var(--space-md);
+}
+.note-category{
 
+}
+.note-tags{
+    display: inline-flex;
+    gap: var(--space-sm);
+
+    margin: var(--space-xs) 0;
+}
+.note-dates{
+    display: flex;
+    flex-direction: row;
 }
