@@ -14,7 +14,7 @@
             <span class="material-symbols-outlined">summarize</span>
         </div>
         <input type="text" class="search-input" placeholder="Pesquisar Notas">
-        <button class="theme-toggle">D/L</button>
+        <button class="theme-toggle material-symbols-outlined">brightness_7</button>
     </header>
 
     <main>
@@ -95,14 +95,14 @@
 
     
 
-    <section id="note-modal" class="modal" hidden >
+    <section id="note-modal" class="modal" >
         <div class="modal-content">
                 <h1>NOVA NOTA</h1>
             <form class="note-form">
 
                 <div class="form-group">
                     <label for="note-title">Título:</label>
-                    <input type="text" id="note-title" class="form-input" autocomplete="off">
+                    <input type="text" id="note-title" class="form-input" autocomplete="off" placeholder="Digite um título">
 
                 </div> <!--Titulo-->
                 
@@ -114,6 +114,7 @@
                 <div class="form-group">
                     <label for="category-selector">Categorias:</label>
                     <select id="category-selector" class="form-select">
+                        <option value=""></option>
 
                     </select>
                 </div><!--Categorias-->
@@ -134,12 +135,13 @@
                     
                     <div class="tag-input-group">
                         <input type="text" id="tag-input" class="form-input" placeholder="Digite uma tag">
-                        <button type="button" class="add-tag-btn">+</button>
+                        <button type="button" class="add-tag-btn"><span class="material-symbols-outlined">add_circle</span></button>
 
                     </div>
                     
                     <div class="tag-list">
                         <!-- Selected tags will be here! -->
+                       
                     </div>
 
                 </div><!--Tags-->
@@ -156,15 +158,15 @@
         </div>
     </section>
 
-    <section id="delete-modal" class="modal" hidden>
+    <section id="delete-modal" class="modal" >
         <div class="modal-content">
             <h2>EXCLUIR NOTA.</h2>
             <p>Tem certeza que deseja excluir essa nota ?</p>
             <p>Essa ação não poderá ser desfeita !</p>
 
-            <div class="modal-confirmation-buttons">
-                <button id="cancel-delete">Cancelar</button>
-                <button id="confirm-delete">Excluir</button>
+            <div class="modal-actions">
+                <button id="cancel-delete" class="cancel-btn">Cancelar</button>
+                <button id="confirm-delete" class="save-btn">Excluir</button>
             </div>
         </div>
     </section>

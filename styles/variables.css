@@ -5,15 +5,16 @@
     --text: #F9FAFB;
     --text-secondary: #9CA3AF;
     --accent: #3B82F6;
-    --success: #22C55E;
-    --danger: #EF4444;
-    --danger-hover: #DC2626;
+    --success: #14703691;
+    --success-hover: #147036;
+    --danger: #ef444481;
+    --danger-hover: #EF4444;
 
     /*Notes colors*/
-    --note-yellow: #FACC15;
-    --note-blue:   #60A5FA;
-    --note-green:  #4ADE80;
-    --note-red:    #FB756E;
+    --note-yellow: #e4c333d8;
+    --note-blue:   #8babefd7;
+    --note-green:  #80de77cc;
+    --note-red:    #fb756ed7;
 
     --radius-sm: 6px;
     --radius-md: 10px;
