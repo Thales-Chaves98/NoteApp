@@ -130,9 +130,9 @@ main{
 .note-text p{
     text-indent: var(--space-md);
 }
-.note-category{
+/*.note-category{
 
-}
+}*/
 .note-tags{
     display: inline-flex;
     gap: var(--space-sm);
