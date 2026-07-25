@@ -7,10 +7,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    font-family: "Inter";
 }
-
 
 
 body{
@@ -20,7 +17,7 @@ body{
     flex-direction: column;
     
     background: var(--background);
-    font-family: 'Inter';
+    font-family: 'Inter', sans-serif;
     color: var(--text);
 }
 
@@ -47,6 +44,7 @@ header{
     flex: 1;
 
     background: var(--surface-light);
+    color: var(--text);
 
     border-radius: var(--space-sm);
     border: none;
@@ -77,13 +75,15 @@ main{
 #toolbar{
     display: flex;
     flex-direction: column;
-
     gap: var(--space-sm);
 
     padding: var(--space-xs) 0;
     margin-bottom: var(--space-xs);
 
     width: 100%;
+
+    background: var(--background);
+    box-shadow: var(--shadow-lg);
 }
 #toolbar-actions{
     width: 100%;
@@ -96,11 +96,26 @@ main{
     gap: var(--space-sm);
 
     width: 100%;
+
+    font-family: inherit;
+
+    padding: var(--space-xs);
+
+    border: none;
+    border-radius: var(--space-md);
+
+    background: var(--text);
+    color: var(--background);
+
+    font-weight: 700;
+    letter-spacing: .5px;
 }
 #toolbar-tabs{
     display: flex;
     flex-direction: row;
     gap: var(--space-xs);
+
+    padding: var(--space-xs);
 
     width: 100%;
 }
@@ -108,6 +123,21 @@ main{
     flex: 1;
 
     padding: var(--space-xs);
+
+    font-family: inherit;
+    font-weight: 600;
+
+    border: none;
+    border-radius: var(--space-md);
+
+    background: none;
+    color: var(--text-secondary);
+}
+.filter-tab.active{
+    background: var(--text);
+    color: var(--background);
+
+    box-shadow:var(--shadow-sm);
 }
 #toolbar-sort{
     width: 100%;
@@ -116,6 +146,16 @@ main{
     width: 100%;
 
     padding: var(--space-xs);
+
+    text-align: center;
+    font-family: inherit;
+    font-size: .9rem;
+
+    border: solid 1px var(--surface-light);
+    border-radius: var(--space-md);
+
+    background:var(--background);
+    color:var(--text-secondary);
 }
 
 #notes-container{
@@ -152,8 +192,11 @@ main{
 
     line-height: 1.6;
 }
+
+/*  CREATE NOTE*/
+
 .note-card{
-    display: flex;
+    display: none;
     flex-direction: column;
     
     width: 100%;
@@ -164,7 +207,7 @@ main{
     box-shadow: var(--shadow-md);
     overflow: hidden;
 
-   display: none;
+    animation:fadeUp .25s ease;
 }
 .note-header{
     display: flex;
@@ -174,7 +217,7 @@ main{
 
     padding: var(--space-xs);    
 }
-.note-header button{
+.note-header > button{
     background: none;
     color: var(--text);
     
@@ -183,6 +226,24 @@ main{
 }
 .note-menu-btn{
     margin-left: auto;
+}
+.note-menu{
+    position:absolute;
+
+    display:none;
+
+    min-width:160px;
+
+    background:var(--surface);
+    border-radius:var(--space-md);
+
+    box-shadow:var(--shadow-lg);
+}
+.note-menu.show{
+    display:block;
+}
+.favorite-btn.active, .pin-btn.active{
+    color: var(--text);
 }
 
 .note-content{
@@ -250,6 +311,17 @@ main{
     font-size: .9rem;
 
     margin-top: var(--space-sm);
+}
+textarea{
+    font: inherit;
+}
+
+input{
+    font: inherit;
+}
+
+select{
+    font: inherit;
 }
 
 /* Note Creation Modal*/
@@ -437,6 +509,8 @@ main{
 
     margin-inline: calc(var(--space-sm) * -1);
     margin-bottom: calc(var(--space-sm) * -1);
+
+    
 }
 .modal-actions button{
     flex: 1;
@@ -446,6 +520,7 @@ main{
     border: none;
 
     font-weight: 600;
+    font-family: inherit;
 
     cursor: pointer;
 
@@ -468,7 +543,96 @@ main{
     background: var(--success-hover);
 }
 
-.modal-content h2{
+.delete-modal-content h2{
     text-align: center;
     margin-bottom: var(--space-sm);
 }
+
+
+footer{
+    padding: var(--space-md);
+
+    text-align:center;
+
+    color: var(--text-secondary);
+
+    font-size:.85rem;
+}
+
+footer a{
+    color: var(--text-secondary);
+    text-decoration:none;
+}
+
+footer a:hover{
+    color: var(--accent);
+    text-decoration:underline;
+}
+
+
+
+/*GLOBAL CONFIG*/
+.hidden{
+    display:none !important;
+}
+
+button {
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+button:hover{
+    filter: brightness(1.08);
+}
+button:active{
+    transform: scale(.85);
+}
+
+button:disabled{
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+::placeholder{
+    color: var(--text-secondary);
+}
+
+::selection{
+    background: var(--accent);
+    color: var(--text);
+}
+
+.note-card{
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+}
+
+.note-card:hover{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.material-symbols-outlined{
+    user-select: none;
+}
+
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+} /*CARD ANIMATION*/
