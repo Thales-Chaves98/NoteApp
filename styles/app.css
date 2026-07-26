@@ -334,7 +334,7 @@ select{
     position: fixed;
     inset: 0;
 
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
 
@@ -344,8 +344,9 @@ select{
     z-index: 999;
 
     animation: fade-in .3s ease;
-
-    display: none; 
+}
+.modal.show{
+    display: flex;
 }
 .modal-content{
     padding: var(--space-sm);
