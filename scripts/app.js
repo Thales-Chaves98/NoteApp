@@ -17,6 +17,8 @@ const noteText = document.querySelector(".note-text");
 const noteCategory = document.querySelector(".note-category");
 const noteTags = document.querySelector(".note-tags");
 const noteDates = document.querySelector(".note-dates");
+//Note Container
+const noteContainer = document.getElementById("notes-container");
 
 //Note Form
 const inputNoteTitle = document.getElementById("note-title");
@@ -78,16 +80,16 @@ function enableCloseOnBackdrop(modal){
 }
 
 function saveNote(){
-    
+
     if(!validateNoteForm()) return;
     
     const note = createNoteObject();
 
     notes.push(note);
-    
-    clearNoteForm();
 
     closeModal(noteModal);
+
+    renderNotes();
     
 }
 
@@ -118,10 +120,6 @@ function createNoteObject(){
     const category = inputNoteCategory.value;
     const color = selectedColor ? selectedColor.dataset.color : "blue";
     const tags = [...currentTags];
-    // const createdAt = we didnt created it yet
-    // const updatedAt = we didnt created it yet
-
-
 
     const note = {
         id: Date.now(),
@@ -217,8 +215,128 @@ function clearNoteForm(){
     });
 }
 
+function createNoteCard(note){
+
+    const noteCardElement = document.createElement("article");
+    noteCardElement.classList.add("note-card");
+
+    //Note Header Element
+    const noteHeaderElement = document.createElement("div");
+    noteHeaderElement.classList.add("note-header");
+    noteHeaderElement.dataset.color = note.color;
+
+    const pinBtnElement = document.createElement("button");
+    pinBtnElement.classList.add("pin-btn");
+    const pinIcon = document.createElement("span");
+    pinIcon.classList.add("material-symbols-outlined");
+    pinIcon.textContent = "keep";
+
+    const favoriteBtnElement = document.createElement("button");
+    favoriteBtnElement.classList.add("favorite-btn");
+    const favoriteIcon = document.createElement("span");
+    favoriteIcon.classList.add("material-symbols-outlined");
+    favoriteIcon.textContent = "star";
+
+    const noteMenuBtnElement = document.createElement("button");
+    noteMenuBtnElement.classList.add("note-menu-btn");
+    const menuVertIcon = document.createElement("span");
+    menuVertIcon.classList.add("material-symbols-outlined");
+    menuVertIcon.textContent = "more_vert";
+
+
+    //Note Content Element
+    const noteContentElement = document.createElement("div")
+    noteContentElement.classList.add("note-content");
+
+    const noteTitleElement = document.createElement("div")
+    noteTitleElement.classList.add("note-title");
+    const titleTextElement = document.createElement("h2")
+    titleTextElement.textContent = note.title;
+
+    const noteTextElement = document.createElement("div")
+    noteTextElement.classList.add("note-text");
+    const contentTextElement = document.createElement("p");
+    contentTextElement.textContent = note.content;
+
+    const noteCategoryElement = document.createElement("div")
+    noteCategoryElement.classList.add("note-category");
+    const noteCategoryTextElement = document.createElement("span");
+    noteCategoryTextElement.textContent = note.category;
+
+    const noteTagsElement = document.createElement("div")
+    noteTagsElement.classList.add("note-tags");
+
+    note.tags.forEach(tag =>{
+        const tagElement = document.createElement("span");
+        tagElement.classList.add("tag-item");
+        tagElement.textContent = tag;
+        noteTagsElement.appendChild(tagElement);
+    })
+
+    const noteDatesElement = document.createElement("div");
+    noteDatesElement.classList.add("note-dates");
+    const createdAtDateElement = document.createElement("small");
+    createdAtDateElement.textContent = `Criada: ${formatDate(note.createdAt)}`;
+    noteDatesElement.appendChild(createdAtDateElement);
+
+    if(note.updatedAt){
+        const updatedAtDateElement = document.createElement("small");
+        updatedAtDateElement.textContent = `Editada: ${formatDate(note.updatedAt)}`;
+        noteDatesElement.appendChild(updatedAtDateElement);
+    }
+
+
+    //Card Element
+    noteCardElement.append(noteHeaderElement);
+    noteCardElement.append(noteContentElement);
+
+    //Card Header Element
+    noteHeaderElement.appendChild(pinBtnElement);
+    pinBtnElement.appendChild(pinIcon);
+
+    noteHeaderElement.appendChild(favoriteBtnElement);
+    favoriteBtnElement.appendChild(favoriteIcon);
+
+    noteHeaderElement.appendChild(noteMenuBtnElement);
+    noteMenuBtnElement.appendChild(menuVertIcon);
+
+    //Card Content Element
+    noteContentElement.appendChild(noteTitleElement);
+    noteTitleElement.append(titleTextElement);
+
+    noteContentElement.appendChild(noteTextElement);
+    noteTextElement.appendChild(contentTextElement);
+
+    noteContentElement.appendChild(noteCategoryElement);
+    noteCategoryElement.appendChild(noteCategoryTextElement);
+
+    noteContentElement.appendChild(noteTagsElement);
+    
+
+    noteContentElement.appendChild(noteDatesElement);
+
+    return noteCardElement;
+}
 function renderNotes(){
-    clearNoteForm();
+
+    noteContainer.innerHTML = "";
+
+    notes.forEach(note =>{
+        const card = createNoteCard(note);
+        console.log(note);
+
+        noteContainer.appendChild(card);
+    });
+}
+
+function formatDate(date){
+    return date.toLocaleString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit"
+    });
 }
 
 enableCloseOnBackdrop(noteModal);

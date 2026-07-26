@@ -200,7 +200,7 @@ main{
 /*  CREATE NOTE*/
 
 .note-card{
-    display: none;
+    display: flex;
     flex-direction: column;
     
     width: 100%;
@@ -220,6 +220,9 @@ main{
     gap: var(--space-xs);
 
     padding: var(--space-xs);    
+}
+.note-header{
+    background: var(--current-color);
 }
 .note-header > button{
     background: none;
@@ -403,6 +406,21 @@ select{
     display: flex;
     gap: var(--space-sm);
 }
+[data-color="red"]{
+    --current-color: var(--note-red);
+}
+
+[data-color="blue"]{
+    --current-color: var(--note-blue);
+}
+
+[data-color="green"]{
+    --current-color: var(--note-green);
+}
+
+[data-color="yellow"]{
+    --current-color: var(--note-yellow);
+}
 .color-option{
     width: 25px;
     height: 25px;
@@ -414,20 +432,8 @@ select{
 
     transition: var(--transition-fast);
 }
-.color-option[data-color="red"]{
-    background: var(--note-red);
-}
-
-.color-option[data-color="blue"]{
-    background: var(--note-blue);
-}
-
-.color-option[data-color="green"]{
-    background: var(--note-green);
-}
-
-.color-option[data-color="yellow"]{
-    background: var(--note-yellow);
+.color-option{
+    background: var(--current-color);
 }
 .color-option:hover{
     transform: scale(1.1);
