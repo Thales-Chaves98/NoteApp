@@ -65,6 +65,7 @@ function openModal(modal){
 
 function closeModal(modal){
     modal.classList.remove("show");
+    clearNoteForm();
 }
 
 function enableCloseOnBackdrop(modal){
@@ -77,12 +78,32 @@ function enableCloseOnBackdrop(modal){
 }
 
 function saveNote(){
+    
+    if(!validateNoteForm()) return;
+    
     const note = createNoteObject();
+
     notes.push(note);
     
     clearNoteForm();
 
     closeModal(noteModal);
+    
+}
+
+function validateNoteForm(){
+    let isValid = true;
+
+    const selectedColor = document.querySelector(".color-option.selected");
+
+    if(inputNoteTitle.value.trim() === "") isValid = false;
+    if(inputNoteContent.value.trim() === "") isValid = false;
+    if(inputNoteCategory.value.trim() === "") isValid = false;
+    if(!selectedColor) isValid = false;
+    if(currentTags.length === 0) isValid = false;
+    
+
+    return isValid;
 }
 
 function createNoteObject(){
