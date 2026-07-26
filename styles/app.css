@@ -252,6 +252,21 @@ main{
 .favorite-btn.active, .pin-btn.active{
     color: var(--text);
 }
+.icon-filled{
+    font-variation-settings:
+        'FILL' 1,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
+
+.icon-outline{
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
+}
 
 .note-content{
     display: flex;
@@ -634,7 +649,11 @@ select:focus-visible{
 }
 
 .material-symbols-outlined{
-    user-select: none;
+    font-variation-settings:
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
 }
 
 

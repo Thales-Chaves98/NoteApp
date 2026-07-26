@@ -228,14 +228,27 @@ function createNoteCard(note){
     const pinBtnElement = document.createElement("button");
     pinBtnElement.classList.add("pin-btn");
     const pinIcon = document.createElement("span");
-    pinIcon.classList.add("material-symbols-outlined");
+    pinIcon.classList.add("material-symbols-outlined", "icon-outline");
     pinIcon.textContent = "keep";
+    
 
     const favoriteBtnElement = document.createElement("button");
     favoriteBtnElement.classList.add("favorite-btn");
     const favoriteIcon = document.createElement("span");
-    favoriteIcon.classList.add("material-symbols-outlined");
+    favoriteIcon.classList.add("material-symbols-outlined", "icon-outline");
     favoriteIcon.textContent = "star";
+
+    pinBtnElement.addEventListener("click", () => {
+        note.isPinned = !note.isPinned;
+
+        updateIcon(pinIcon, note.isPinned);
+    });
+
+    favoriteBtnElement.addEventListener("click", () => {
+        note.isFavorite = !note.isFavorite;
+
+        updateIcon(favoriteIcon, note.isFavorite);
+    });
 
     const noteMenuBtnElement = document.createElement("button");
     noteMenuBtnElement.classList.add("note-menu-btn");
@@ -243,6 +256,8 @@ function createNoteCard(note){
     menuVertIcon.classList.add("material-symbols-outlined");
     menuVertIcon.textContent = "more_vert";
 
+    updateIcon(pinIcon, note.isPinned);
+    updateIcon(pinIcon, note.isPinned);
 
     //Note Content Element
     const noteContentElement = document.createElement("div")
@@ -269,7 +284,7 @@ function createNoteCard(note){
     note.tags.forEach(tag =>{
         const tagElement = document.createElement("span");
         tagElement.classList.add("tag-item");
-        tagElement.textContent = tag;
+        tagElement.textContent = `#${tag}`;
         noteTagsElement.appendChild(tagElement);
     })
 
@@ -338,6 +353,10 @@ function formatDate(date){
         minute: "2-digit"
     });
 }
+
+function updateIcon(icon, state){
+    icon.style.fontVariationSettings = `"FILL" ${state ? 1 : 0}`;
+};
 
 enableCloseOnBackdrop(noteModal);
 enableCloseOnBackdrop(deleteModal);

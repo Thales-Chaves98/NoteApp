@@ -1,7 +1,7 @@
 :root{
     --background: #111827;
     --surface: #1F2937;
-    --surface-light: #374151;
+    --surface-light: #465368;
     --text: #F9FAFB;
     --text-secondary: #9CA3AF;
     --accent: #7dc9d3;
@@ -11,7 +11,7 @@
     --danger-hover: #EF4444;
 
     /*Notes colors*/
-    --note-yellow: #e4c333d8;
+    --note-yellow: #ffdb3dd8;
     --note-blue:   #8babefd7;
     --note-green:  #80de77cc;
     --note-red:    #fb756ed7;
