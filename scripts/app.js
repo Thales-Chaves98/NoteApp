@@ -131,14 +131,41 @@ function addTag(){
     inputNoteTag.value = "";
 }
 
+function removeTag(tag){
+
+    const index = currentTags.indexOf(tag);
+    currentTags.splice(index, 1);
+
+    renderTags();
+}
+
 function renderTags(){
     tagList.innerHTML = "";
 
     currentTags.forEach(tag =>{
-        const tagElement = document.createElement("span");
 
+        const tagElement = document.createElement("span");
         tagElement.classList.add("tag-item");
-        tagElement.textContent = tag;
+
+        const tagText = document.createElement("span");
+        tagText.textContent = tag;
+
+        const removeBtn = document.createElement("button");
+        removeBtn.classList.add("remove-tag-btn");
+
+        const removeIcon = document.createElement("span");
+        removeIcon.classList.add("material-symbols-outlined");
+        removeIcon.textContent = "close";
+
+        removeBtn.appendChild(removeIcon);
+
+        removeBtn.addEventListener("click", () => {
+            removeTag(tag);
+        });
+
+        tagElement.appendChild(tagText);
+        tagElement.appendChild(removeBtn);
+
         tagList.appendChild(tagElement);
     });
 }
