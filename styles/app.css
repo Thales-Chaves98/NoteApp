@@ -352,7 +352,7 @@ select{
 .modal-content{
     padding: var(--space-sm);
 
-    width: 300px;
+    width: 95%;
     background: var(--surface);
 
     border: solid 1px var(--surface-light);
