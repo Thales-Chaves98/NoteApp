@@ -433,7 +433,8 @@ select{
     transform: scale(1.1);
 }
 .color-option.selected{
-    border-color: white;
+    border-color: var(--surface);
+    outline: solid 2px white;
     box-shadow: 0 0 0 2px var(--background);
 }
 

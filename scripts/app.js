@@ -55,6 +55,10 @@ saveNoteBtn.addEventListener("click", saveNote);
 
 addTagBtn.addEventListener("click", addTag);
 
+inputNoteColor.forEach(color =>{
+        color.addEventListener("click", selectColor);
+});
+
 function openModal(modal){
     modal.classList.add("show");
 }
@@ -170,6 +174,15 @@ function renderTags(){
     });
 }
 
+function selectColor(event){
+
+    inputNoteColor.forEach(color =>{
+        color.classList.remove("selected")
+    });
+
+    event.target.classList.add("selected");
+}
+
 function clearNoteForm(){
     inputNoteTitle.value = "";
     inputNoteContent.value = "";
@@ -177,6 +190,10 @@ function clearNoteForm(){
     inputNoteTag.value = "";
     currentTags.length = 0;
     tagList.innerHTML = "";
+
+    inputNoteColor.forEach(color =>{
+        color.classList.remove("selected")
+    });
 }
 
 function renderNotes(){
