@@ -27,6 +27,7 @@ const inputNoteTag = document.getElementById("tag-input");
 const addTagBtn = document.querySelector(".add-tag-btn");
 const cancelNoteBtn = document.getElementById("cancel-note-btn");
 const saveNoteBtn = document.getElementById("save-note-btn");
+const tagList = document.querySelector(".tag-list");
 
 //Confirm Delete Note Modal
 const cancelDeleteBtn = document.getElementById("cancel-delete-btn");
@@ -37,6 +38,10 @@ const noteModal = document.getElementById("note-modal");
 const deleteModal = document.getElementById("delete-modal");
 
 
+const notes = [];
+const currentTags = [];
+
+
 
 createNoteBtn.addEventListener("click", () => {
     openModal(noteModal);
@@ -45,10 +50,10 @@ createNoteBtn.addEventListener("click", () => {
 cancelNoteBtn.addEventListener("click", () => {
     closeModal(noteModal);
 });
-saveNoteBtn.addEventListener("click", () => {
-    closeModal(noteModal);
-});
 
+saveNoteBtn.addEventListener("click", saveNote);
+
+addTagBtn.addEventListener("click", addTag);
 
 function openModal(modal){
     modal.classList.add("show");
@@ -65,6 +70,90 @@ function enableCloseOnBackdrop(modal){
             closeModal(modal);
         }
     });
+}
+
+function saveNote(){
+    const note = createNoteObject();
+    notes.push(note);
+    
+    clearNoteForm();
+
+    closeModal(noteModal);
+}
+
+function createNoteObject(){
+    const selectedColor = document.querySelector(".color-option.selected");
+
+    const isPinned = false;
+    const isFavorite = false;
+    const isArchived = false
+
+    const title = inputNoteTitle.value.trim().toUpperCase();
+    const content = inputNoteContent.value.trim();
+    const category = inputNoteCategory.value;
+    const color = selectedColor ? selectedColor.dataset.color : "blue";
+    const tags = [...currentTags];
+    // const createdAt = we didnt created it yet
+    // const updatedAt = we didnt created it yet
+
+
+
+    const note = {
+        id: Date.now(),
+        title,
+        content,
+        category,
+        color,
+        tags,
+        createdAt: new Date(),
+        updatedAt: null,
+        isPinned,
+        isFavorite,
+        isArchived
+    }
+
+    return note;
+}
+
+function addTag(){
+    const tag = inputNoteTag.value.trim().toUpperCase();
+    
+    if(tag === ""){
+        return;
+    }
+    if(currentTags.includes(tag)){
+        return;
+    }
+
+    currentTags.push(tag);
+
+    renderTags();
+    inputNoteTag.value = "";
+}
+
+function renderTags(){
+    tagList.innerHTML = "";
+
+    currentTags.forEach(tag =>{
+        const tagElement = document.createElement("span");
+
+        tagElement.classList.add("tag-item");
+        tagElement.textContent = tag;
+        tagList.appendChild(tagElement);
+    });
+}
+
+function clearNoteForm(){
+    inputNoteTitle.value = "";
+    inputNoteContent.value = "";
+    inputNoteCategory.value = "";
+    inputNoteTag.value = "";
+    currentTags.length = 0;
+    tagList.innerHTML = "";
+}
+
+function renderNotes(){
+    clearNoteForm();
 }
 
 enableCloseOnBackdrop(noteModal);
