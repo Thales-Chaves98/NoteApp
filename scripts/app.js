@@ -40,6 +40,7 @@ const deleteModal = document.getElementById("delete-modal");
 
 createNoteBtn.addEventListener("click", () => {
     openModal(noteModal);
+
 });
 cancelNoteBtn.addEventListener("click", () => {
     closeModal(noteModal);
@@ -56,3 +57,15 @@ function openModal(modal){
 function closeModal(modal){
     modal.classList.remove("show");
 }
+
+function enableCloseOnBackdrop(modal){
+    modal.addEventListener("click", (event) => {
+        
+        if(event.target === modal){
+            closeModal(modal);
+        }
+    });
+}
+
+enableCloseOnBackdrop(noteModal);
+enableCloseOnBackdrop(deleteModal);
