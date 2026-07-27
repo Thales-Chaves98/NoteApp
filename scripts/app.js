@@ -7,10 +7,6 @@ const createNoteBtn = document.querySelector(".create-note-btn");
 const filterTabs = document.querySelectorAll(".filter-tab");
 const sortSelect = document.querySelector(".sort-select");
 
-//Notes Card
-const pinBtn = document.querySelector(".pin-btn");
-const favoriteBtn = document.querySelector(".favorite-btn");
-const noteMenuBtn = document.querySelector(".note-menu-btn");
 //Note Content
 const noteTitle = document.querySelector(".note-title");
 const noteText = document.querySelector(".note-text");
@@ -256,8 +252,10 @@ function createNoteCard(note){
     menuVertIcon.classList.add("material-symbols-outlined");
     menuVertIcon.textContent = "more_vert";
 
+    const menuElement = createNoteMenu(note);
+
     updateIcon(pinIcon, note.isPinned);
-    updateIcon(pinIcon, note.isPinned);
+    updateIcon(favoriteIcon, note.isFavorite);
 
     //Note Content Element
     const noteContentElement = document.createElement("div")
@@ -315,6 +313,8 @@ function createNoteCard(note){
     noteHeaderElement.appendChild(noteMenuBtnElement);
     noteMenuBtnElement.appendChild(menuVertIcon);
 
+    noteHeaderElement.appendChild(menuElement);
+
     //Card Content Element
     noteContentElement.appendChild(noteTitleElement);
     noteTitleElement.append(titleTextElement);
@@ -357,6 +357,43 @@ function formatDate(date){
 function updateIcon(icon, state){
     icon.style.fontVariationSettings = `"FILL" ${state ? 1 : 0}`;
 };
+
+function createNoteMenu(note){
+
+    const menuElement = document.createElement("div");
+    menuElement.classList.add("note-menu");
+
+    const editBtnElement = document.createElement("button");
+    const editIconElement = document.createElement("span")
+    editBtnElement.classList.add("menu-item");
+    editIconElement.textContent = "stylus";
+    editIconElement.classList.add("material-symbols-outlined");
+    editBtnElement.appendChild(editIconElement);
+    editBtnElement.append("Editar")
+
+    const archiveBtnElement = document.createElement("button");
+    const archiveIconElement = document.createElement("span");
+    archiveBtnElement.classList.add("menu-item");
+    archiveIconElement.textContent = "package_2";
+    archiveIconElement.classList.add("material-symbols-outlined");
+    archiveBtnElement.appendChild(archiveIconElement);
+    archiveBtnElement.append("Arquivar");
+
+    const deleteBtnElement = document.createElement("button");
+    const deleteIconElement = document.createElement("span");
+    deleteBtnElement.classList.add("menu-item");
+    deleteIconElement.textContent = "delete_forever";
+    deleteIconElement.classList.add("material-symbols-outlined");
+    deleteBtnElement.appendChild(deleteIconElement);
+    deleteBtnElement.append("Deletar");
+
+
+    menuElement.appendChild(editBtnElement);
+    menuElement.appendChild(archiveBtnElement);
+    menuElement.appendChild(deleteBtnElement);
+    
+    return menuElement;
+}
 
 enableCloseOnBackdrop(noteModal);
 enableCloseOnBackdrop(deleteModal);
