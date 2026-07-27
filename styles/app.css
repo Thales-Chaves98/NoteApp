@@ -571,9 +571,14 @@ select{
     background: var(--success-hover);
 }
 
-.delete-modal-content h2{
+#delete-modal h2{
     text-align: center;
-    margin-bottom: var(--space-sm);
+    margin-top: var(--space-md);
+    
+}
+#delete-modal p{
+    margin: var(--space-lg) 0;
+    text-align: center;
 }
 
 
