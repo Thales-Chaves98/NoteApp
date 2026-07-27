@@ -254,6 +254,18 @@ function createNoteCard(note){
 
     const menuElement = createNoteMenu(note);
 
+    noteMenuBtnElement.addEventListener("click", () =>{
+        const isOpen = menuElement.classList.contains("show");
+
+        document.querySelectorAll(".note-menu").forEach(menu =>{
+            menu.classList.remove("show");
+        });
+
+        if(!isOpen){
+            menuElement.classList.add("show");
+        }
+    });
+
     updateIcon(pinIcon, note.isPinned);
     updateIcon(favoriteIcon, note.isFavorite);
 
