@@ -38,6 +38,7 @@ const deleteModal = document.getElementById("delete-modal");
 
 const notes = [];
 const currentTags = [];
+let selectedNoteId = null;
 
 
 
@@ -399,6 +400,13 @@ function createNoteMenu(note){
     deleteBtnElement.appendChild(deleteIconElement);
     deleteBtnElement.append("Deletar");
 
+    deleteBtnElement.addEventListener("click", () =>{
+
+        selectedNoteId = note.id;
+        menuElement.classList.remove("show");
+
+        openModal(deleteModal);
+    });
 
     menuElement.appendChild(editBtnElement);
     menuElement.appendChild(archiveBtnElement);
@@ -406,6 +414,42 @@ function createNoteMenu(note){
     
     return menuElement;
 }
+
+function deleteNote(){
+    const index = notes.findIndex(note => note.id === selectedNoteId);
+
+    if(index === -1) return;
+
+    notes.splice(index, 1);
+    selectedNoteId = null;
+    closeModal(deleteModal);
+}
+
+cancelDeleteBtn.addEventListener("click", () => {
+    selectedNoteId = null;
+
+    closeModal(deleteModal);
+});
+
+confirmDeleteBtn.addEventListener("click", () => {
+
+    deleteNote();
+    renderNotes();
+}); 
+
+document.addEventListener("click", (event) =>{
+
+    const clickedMenu = event.target.closest(".note-menu");
+    const clickedMenuBtn = event.target.closest(".note-menu-btn");
+
+    if(clickedMenu || clickedMenuBtn) return;
+
+    document.querySelectorAll(".note-menu").forEach(menu => {
+        menu.classList.remove("show");
+    });   
+
+});
+
 
 enableCloseOnBackdrop(noteModal);
 enableCloseOnBackdrop(deleteModal);
